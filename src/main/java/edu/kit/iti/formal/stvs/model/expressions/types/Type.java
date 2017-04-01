@@ -1,5 +1,7 @@
 package edu.kit.iti.formal.stvs.model.expressions;
 
+import sun.jvm.hotspot.debugger.cdbg.IntType;
+
 import java.util.Optional;
 
 /**
@@ -8,18 +10,11 @@ import java.util.Optional;
  * @author Philipp
  */
 public interface Type {
+  public static interface Visitor<T> {
+    T visit(TypeInt type);
+  }
 
-  /**
-   * matches the actual type present. Subclasses call the correct function.
-   *
-   * @param matchIntType in case its a {@link TypeInt}
-   * @param matchBoolType in case its a {@link TypeBool}
-   * @param matchEnumType in case its a {@link TypeEnum}
-   * @param <R> the return type of the visitor
-   * @return the return value of the visitor
-   */
-  <R> R match(TypeIntegerHandler<R> matchIntType, TypeBooleanHandler<R> matchBoolType,
-      TypeEnumHandler<R> matchEnumType);
+  <R> R accept(Visitor<R> visitor);
 
   /**
    * Finds out whether this type checks against another type, which means any value of this type can
@@ -35,7 +30,7 @@ public interface Type {
    * Get the type name of this type in a human-readable format (in contrast to this classes'
    * toString()). This can be used to show the type in a GUI, for example.
    *
-   * @return a string that should match the type name as it is usually used in st-code.
+   * @return a string that should accept the type name as it is usually used in st-code.
    */
   String getTypeName();
 

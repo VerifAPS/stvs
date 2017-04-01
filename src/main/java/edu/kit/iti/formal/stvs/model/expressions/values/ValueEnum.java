@@ -24,10 +24,8 @@ public class ValueEnum implements Value {
     this.enumType = enumType;
   }
 
-  @Override
-  public <R> R match(ValueIntegerHandler<R> matchInt, ValueBooleanHandler<R> matchBoolean,
-      ValueEnumHandler<R> matchEnum) {
-    return matchEnum.handle(this);
+  @Override public <T> T accept(Visitor<T> visitor) {
+    return visitor.visit(this);
   }
 
   public boolean equals(ValueEnum other) {

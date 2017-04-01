@@ -43,14 +43,14 @@ public class TypeEnum implements Type {
   }
 
   @Override
-  public <R> R match(TypeIntegerHandler<R> matchIntType, TypeBooleanHandler<R> matchBoolType,
+  public <R> R accept(TypeIntegerHandler<R> matchIntType, TypeBooleanHandler<R> matchBoolType,
       TypeEnumHandler<R> matchEnumType) {
     return matchEnumType.handle(this);
   }
 
   @Override
   public boolean checksAgainst(Type other) {
-    return other.match(() -> false, () -> false,
+    return other.accept(() -> false, () -> false,
         (otherEnum) -> otherEnum.getTypeName().equals(getTypeName()));
   }
 

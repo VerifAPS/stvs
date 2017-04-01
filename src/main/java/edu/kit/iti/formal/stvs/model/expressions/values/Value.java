@@ -7,6 +7,25 @@ package edu.kit.iti.formal.stvs.model.expressions;
  */
 public interface Value {
 
+  public static interface Visitor<T> {
+    T visit(ValueInt value);
+    T visit(AbstractValue.ValueSInt value);
+    T visit(AbstractValue.ValueDInt value);
+    T visit(AbstractValue.ValueLInt value);
+
+    T visit(AbstractValue.ValueUInt value);
+    T visit(AbstractValue.ValueUSInt value);
+    T visit(AbstractValue.ValueUDInt value);
+    T visit(AbstractValue.ValueULInt value);
+
+    T visit(AbstractValue.ValueReal value);
+    T visit(AbstractValue.ValueDReal value);
+
+
+    T visit(ValueBool value);
+    T visit(ValueEnum value);
+  }
+
   /**
    * Visitor function for Values. Subclasses call the respective Functions.
    *
@@ -16,8 +35,7 @@ public interface Value {
    * @param <R> the return type of the visitor functions
    * @return the return value of the visitor function called
    */
-  <R> R match(ValueIntegerHandler<R> matchInt, ValueBooleanHandler<R> matchBoolean,
-      ValueEnumHandler<R> matchEnum);
+  <T> T accept(Visitor<T> visitor);
 
   /**
    * Should return type of this value.
