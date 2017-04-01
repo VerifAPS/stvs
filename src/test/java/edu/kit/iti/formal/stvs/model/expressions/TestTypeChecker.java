@@ -1,5 +1,9 @@
 package edu.kit.iti.formal.stvs.model.expressions;
 
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,7 +17,7 @@ public class TestTypeChecker {
 
   public TestTypeChecker() {
     varTypeCtx = new HashMap<>();
-    varTypeCtx.put("X", TypeInt.INT);
+    varTypeCtx.put("X", AnyIntType.INT);
 
     checker = new TypeChecker(varTypeCtx);
   }

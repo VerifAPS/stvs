@@ -1,5 +1,6 @@
 package edu.kit.iti.formal.stvs.view.spec.timingdiagram.renderer;
 
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueLambdaVisitor;
 import edu.kit.iti.formal.stvs.model.table.ConcreteCell;
 
 import java.util.List;
@@ -39,11 +40,10 @@ public class Plotable {
   public static XYChart.Series<Number, Number> toNumberSeries(List<ConcreteCell> concreteCells) {
     XYChart.Series<Number, Number> dataSeries = new XYChart.Series<>();
     for (int i = 0; i < concreteCells.size(); i++) {
-      Number cellAsNumber = concreteCells.get(i).getValue().match(
-          integer -> integer,
-          bool -> bool ? 1 : 0,
-          valueEnum -> valueEnum.getType().getValues().indexOf(valueEnum)
-      );
+      Number cellAsNumber = concreteCells.get(i).getValue().accept(
+              new ValueLambdaVisitor<Number>(integer -> integer.getValue().longValue(),
+                      valueEnum -> valueEnum.getType().getValues().indexOf(valueEnum),
+                      bool -> bool.getValue() ? 1 : 0));
       dataSeries.getData().add(new XYChart.Data<>(i, cellAsNumber));
     }
     return dataSeries;

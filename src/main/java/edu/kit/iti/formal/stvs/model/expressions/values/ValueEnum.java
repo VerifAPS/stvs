@@ -1,4 +1,7 @@
-package edu.kit.iti.formal.stvs.model.expressions;
+package edu.kit.iti.formal.stvs.model.expressions.values;
+
+import edu.kit.iti.formal.stvs.model.expressions.Expression;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
 
 /**
  * Runtime-representation for enum values of {@link Expression}s.
@@ -13,18 +16,18 @@ public class ValueEnum implements Value {
   private final TypeEnum enumType;
 
   /**
-   * package-local. Generate values from TypeEnum! Construct a new value of given type with given
+   * Generate values from TypeEnum! Construct a new value of given type with given
    * constructor.
    *
    * @param enumValue enum constructor (for example <tt>red</tt>)
    * @param enumType enum type (for example <tt>TypeEnum(COLORS, [red, green, blue])</tt>)
    */
-  ValueEnum(String enumValue, TypeEnum enumType) {
+  public ValueEnum(String enumValue, TypeEnum enumType) {
     this.enumValue = enumValue;
     this.enumType = enumType;
   }
 
-  @Override public <T> T accept(Visitor<T> visitor) {
+  @Override public <T> T accept(ValueVisitor<T> visitor) {
     return visitor.visit(this);
   }
 

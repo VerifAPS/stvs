@@ -12,10 +12,10 @@ import edu.kit.iti.formal.automation.st.ast.VariableDeclaration;
 import edu.kit.iti.formal.automation.visitors.DefaultVisitor;
 import edu.kit.iti.formal.stvs.model.common.CodeIoVariable;
 import edu.kit.iti.formal.stvs.model.common.VariableCategory;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeEnum;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class ParsedCode {
     TypeDeclarationVisitor() {
       this.definedTypes = new ArrayList<>();
       this.definedTypes.add(TypeBool.BOOL);
-      this.definedTypes.add(TypeInt.INT);
+      this.definedTypes.add(AnyIntType.INT);
     }
 
     @Override

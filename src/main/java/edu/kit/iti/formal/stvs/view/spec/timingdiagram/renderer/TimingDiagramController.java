@@ -2,8 +2,8 @@ package edu.kit.iti.formal.stvs.view.spec.timingdiagram.renderer;
 
 import edu.kit.iti.formal.stvs.model.common.Selection;
 import edu.kit.iti.formal.stvs.model.common.ValidIoVariable;
-import edu.kit.iti.formal.stvs.model.expressions.TypeEnum;
-import edu.kit.iti.formal.stvs.model.expressions.ValueEnum;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueEnum;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
 import edu.kit.iti.formal.stvs.view.Controller;
 import javafx.beans.property.BooleanProperty;
@@ -15,7 +15,6 @@ import javafx.scene.chart.Axis;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;

@@ -6,10 +6,12 @@ import de.tudresden.inf.lat.jsexp.SexpParserException;
 import edu.kit.iti.formal.stvs.logic.specification.ConcretizationException;
 import edu.kit.iti.formal.stvs.model.common.ValidIoVariable;
 import edu.kit.iti.formal.stvs.model.config.GlobalConfig;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.Value;
-import edu.kit.iti.formal.stvs.model.expressions.ValueBool;
-import edu.kit.iti.formal.stvs.model.expressions.ValueInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeLambdaVisitor;
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueInt;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueLambdaVisitor;
 import edu.kit.iti.formal.stvs.model.table.ConcreteCell;
 import edu.kit.iti.formal.stvs.model.table.ConcreteDuration;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
@@ -118,10 +120,16 @@ public class Z3Solver {
               new ConcreteCell(validIoVariable.getValidType().generateDefaultValue()));
           return;
         }
-        Value value = validIoVariable.getValidType().match(
-            () -> new ValueInt(BitvectorUtils.intFromHex(solvedValue, true)),
-            () -> solvedValue.equals("true") ? ValueBool.TRUE : ValueBool.FALSE,
-            typeEnum -> typeEnum.getValues().get(BitvectorUtils.intFromHex(solvedValue, false)));
+
+        TypeLambdaVisitor<Value> visitor = new TypeLambdaVisitor<>();
+        visitor.setValueIntFunction(
+                (v) -> new ValueInt(BitvectorUtils.intFromHex(solvedValue, true)));
+        visitor.setValueBoolFunction(
+                (v) -> solvedValue.equals("true") ? ValueBool.TRUE : ValueBool.FALSE);
+        visitor.setValueEnumFunction(typeEnum -> typeEnum.getValues()
+                .get(BitvectorUtils.intFromHex(solvedValue, false)));
+
+        Value value = validIoVariable.getValidType().accept(visitor);
         newRow.put(validIoVariable.getName(), new ConcreteCell(value));
       });
       specificationRows.add(SpecificationRow.createUnobservableRow(newRow));

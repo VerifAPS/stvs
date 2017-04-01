@@ -10,12 +10,12 @@ import edu.kit.iti.formal.stvs.logic.io.xml.XmlImporter;
 import edu.kit.iti.formal.stvs.model.common.SpecIoVariable;
 import edu.kit.iti.formal.stvs.model.common.ValidIoVariable;
 import edu.kit.iti.formal.stvs.model.common.VariableCategory;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
-import edu.kit.iti.formal.stvs.model.expressions.Value;
-import edu.kit.iti.formal.stvs.model.expressions.ValueBool;
-import edu.kit.iti.formal.stvs.model.expressions.ValueInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueInt;
 import edu.kit.iti.formal.stvs.model.table.ConcreteCell;
 import edu.kit.iti.formal.stvs.model.table.ConcreteDuration;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
@@ -368,7 +368,7 @@ public class GeTeTaImporter extends XmlImporter<VerificationResult> {
       int intVal = Integer.parseInt(varValue.substring(underlineIndex + 1, varValue.length()));
       currentValues.put(varName, new ValueInt(intVal));
       if (!varTypes.containsKey(varName)) {
-        varTypes.put(varName, TypeInt.INT);
+        varTypes.put(varName, AnyIntType.INT);
       }
     } else if (BOOL_VALUE_PATTERN.matcher(varValue).matches()) {
       if (!varTypes.containsKey(varName)) {

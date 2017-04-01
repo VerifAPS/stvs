@@ -1,9 +1,9 @@
 package edu.kit.iti.formal.stvs.model.table.problems;
 
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.expressions.TypeChecker;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
 import edu.kit.iti.formal.stvs.model.expressions.parser.ParseException;
 import edu.kit.iti.formal.stvs.model.table.ConstraintCell;
 import org.junit.Before;
@@ -33,9 +33,9 @@ public class CellParseProblemTest {
 
   @Test
   public void expressionOrProblemForCell() throws Exception {
-    List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL);
+    List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL);
     Map<String, Type> typeMap = new HashMap<>();
-    typeMap.put("A", TypeInt.INT);
+    typeMap.put("A", AnyIntType.INT);
     typeMap.put("B", TypeBool.BOOL);
     TypeChecker typeChecker = new TypeChecker(typeMap);
     ConstraintCell problematicCell = new ConstraintCell("3<<>4");

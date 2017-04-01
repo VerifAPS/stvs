@@ -1,12 +1,12 @@
 package edu.kit.iti.formal.stvs.logic.verification;
 
-import java.io.IOException;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Detects when a process is finished and invokes the associated listeners. Adapted from

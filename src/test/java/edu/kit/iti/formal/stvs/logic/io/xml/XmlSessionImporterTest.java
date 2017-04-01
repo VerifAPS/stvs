@@ -6,10 +6,10 @@ import edu.kit.iti.formal.stvs.logic.io.ImporterFacade;
 import edu.kit.iti.formal.stvs.model.StvsRootModel;
 import edu.kit.iti.formal.stvs.model.config.GlobalConfig;
 import edu.kit.iti.formal.stvs.model.config.History;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.expressions.TypeFactory;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
 import edu.kit.iti.formal.stvs.model.table.HybridSpecification;
 import org.apache.commons.io.FileUtils;
@@ -43,7 +43,7 @@ public class XmlSessionImporterTest {
     HybridSpecification hybridSpec = ImporterFacade.importHybridSpec(new File(StvsApplication
         .class.getResource("testSets/valid_1/constraint_spec_valid_1.xml").toURI()),
         ImporterFacade.ImportFormat.XML);
-    List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL, TypeFactory.enumOfName
+    List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL, TypeFactory.enumOfName
         ("enumD", "literalOne", "literalTwo"));
     ConcreteSpecification concreteSpec = ImporterFacade.importConcreteSpec(new File
         (StvsApplication.class.getResource("testSets/valid_1/concrete_spec_valid_1.xml").toURI()

@@ -6,9 +6,9 @@ import edu.kit.iti.formal.stvs.model.common.FreeVariableList;
 import edu.kit.iti.formal.stvs.model.common.FreeVariableListValidator;
 import edu.kit.iti.formal.stvs.model.common.VariableCategory;
 import edu.kit.iti.formal.stvs.model.config.GlobalConfig;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.table.ConstraintSpecification;
 import edu.kit.iti.formal.stvs.model.table.HybridSpecification;
 import edu.kit.iti.formal.stvs.model.table.problems.ConstraintSpecificationValidator;
@@ -49,7 +49,7 @@ public class SpecificationTableDemo {
   }
 
   private List<Node> simpleTableScene() {
-    List<Type> types = Arrays.asList(TypeInt.INT, TypeBool.BOOL);
+    List<Type> types = Arrays.asList(AnyIntType.INT, TypeBool.BOOL);
     List<CodeIoVariable> codevars = Arrays.asList(
         new CodeIoVariable(VariableCategory.INPUT, "BOOL", "A"),
         new CodeIoVariable(VariableCategory.INPUT, "INT", "B"),

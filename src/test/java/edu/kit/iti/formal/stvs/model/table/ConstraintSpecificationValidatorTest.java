@@ -4,9 +4,9 @@ import com.google.gson.JsonElement;
 import edu.kit.iti.formal.stvs.model.common.CodeIoVariable;
 import edu.kit.iti.formal.stvs.model.common.FreeVariableList;
 import edu.kit.iti.formal.stvs.model.common.FreeVariableListValidator;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import edu.kit.iti.formal.stvs.model.table.problems.ConstraintSpecificationValidator;
 import javafx.beans.property.SimpleObjectProperty;
 import org.junit.Test;
@@ -53,7 +53,7 @@ public class ConstraintSpecificationValidatorTest {
 
     List<CodeIoVariable> codeIoVariables = JsonTableParser.codeIoVariablesFromJson(testjson);
 
-    List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL);
+    List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL);
 
     FreeVariableList freeVars = JsonTableParser.freeVariableSetFromJson(testjson);
 

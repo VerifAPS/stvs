@@ -1,4 +1,9 @@
-package edu.kit.iti.formal.stvs.model.expressions.values;
+package edu.kit.iti.formal.stvs.model.expressions.types;
+
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueEnum;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueInt;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueVisitor;
 
 import java.util.function.Function;
 
@@ -6,56 +11,55 @@ import java.util.function.Function;
  * @author Alexander Weigl
  * @version 1 (01.04.17)
  */
-public class ValueLambdaVisitor<T> implements ValueVisitor<T> {
-    private Function<ValueInt, T> valueIntFunction;
-    private Function<ValueEnum, T> valueEnumFunction;
-    private Function<ValueBool, T> valueBoolFunction;
+public class TypeLambdaVisitor<T> implements TypeVisitor<T> {
+    private Function<AnyIntType, T> valueIntFunction;
+    private Function<TypeEnum, T> valueEnumFunction;
+    private Function<TypeBool, T> valueBoolFunction;
 
-    public ValueLambdaVisitor() {
+    public TypeLambdaVisitor() {
     }
 
-    public ValueLambdaVisitor(Function<ValueInt, T> valueIntFunction,
-            Function<ValueEnum, T> valueEnumFunction,
-            Function<ValueBool, T> valueBoolFunction) {
+    public TypeLambdaVisitor(Function<AnyIntType, T> valueIntFunction,
+            Function<TypeEnum, T> valueEnumFunction,
+            Function<TypeBool, T> valueBoolFunction) {
         this.valueIntFunction = valueIntFunction;
         this.valueEnumFunction = valueEnumFunction;
         this.valueBoolFunction = valueBoolFunction;
     }
 
-    public ValueLambdaVisitor setValueIntFunction(
-            Function<ValueInt, T> valueIntFunction) {
+    public TypeLambdaVisitor setValueIntFunction(
+            Function<AnyIntType, T> valueIntFunction) {
         this.valueIntFunction = valueIntFunction;
         return this;
     }
 
-    public ValueLambdaVisitor setValueEnumFunction(
-            Function<ValueEnum, T> valueEnumFunction) {
+    public TypeLambdaVisitor setValueEnumFunction(
+            Function<TypeEnum, T> valueEnumFunction) {
         this.valueEnumFunction = valueEnumFunction;
         return this;
     }
 
-    public ValueLambdaVisitor setValueBoolFunction(
-            Function<ValueBool, T> valueBoolFunction) {
+    public TypeLambdaVisitor setValueBoolFunction(
+            Function<TypeBool, T> valueBoolFunction) {
         this.valueBoolFunction = valueBoolFunction;
         return this;
     }
 
-    @Override public T visit(ValueInt value) {
+    @Override public T visit(AnyIntType type) {
         if (valueIntFunction != null)
-            return valueIntFunction.apply(value);
+            return valueIntFunction.apply(type);
         return null;
     }
 
-    @Override public T visit(ValueBool value) {
-        if (valueBoolFunction != null)
-            return valueBoolFunction.apply(value);
-        return null;
-    }
-
-    @Override public T visit(ValueEnum value) {
+    @Override public T visit(TypeEnum typeEnum) {
         if (valueEnumFunction != null)
-            return valueEnumFunction.apply(value);
+            return valueEnumFunction.apply(typeEnum);
         return null;
     }
 
+    @Override public T visit(TypeBool typeBool) {
+        if (valueBoolFunction != null)
+            return valueBoolFunction.apply(typeBool);
+        return null;
+    }
 }

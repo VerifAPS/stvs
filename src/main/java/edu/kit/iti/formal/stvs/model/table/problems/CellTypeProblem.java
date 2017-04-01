@@ -1,8 +1,8 @@
 package edu.kit.iti.formal.stvs.model.table.problems;
 
 import edu.kit.iti.formal.stvs.model.expressions.Expression;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.expressions.TypeCheckException;
 import edu.kit.iti.formal.stvs.model.expressions.TypeChecker;
 import edu.kit.iti.formal.stvs.model.table.ConstraintCell;

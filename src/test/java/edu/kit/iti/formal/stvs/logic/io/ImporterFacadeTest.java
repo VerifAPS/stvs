@@ -10,11 +10,11 @@ import edu.kit.iti.formal.stvs.model.StvsRootModel;
 import edu.kit.iti.formal.stvs.model.code.Code;
 import edu.kit.iti.formal.stvs.model.config.GlobalConfig;
 import edu.kit.iti.formal.stvs.model.config.History;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.expressions.TypeFactory;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import edu.kit.iti.formal.stvs.model.table.*;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
 import edu.kit.iti.formal.stvs.model.verification.VerificationResult;
 import edu.kit.iti.formal.stvs.model.verification.VerificationSuccess;
 import org.apache.commons.io.FileUtils;
@@ -27,7 +27,6 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
@@ -70,7 +69,7 @@ public class ImporterFacadeTest {
   public void importConcreteSpecFile() throws Exception {
     File file = new File(XmlConcreteSpecImporter
         .class.getResource("spec_concrete_valid_1.xml").toURI().getPath());
-    List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL);
+    List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL);
     ConcreteSpecification importedSpec = ImporterFacade.importConcreteSpec(file,
         ImporterFacade.ImportFormat.XML, typeContext);
     JsonElement json = JsonTableParser.jsonFromResource("concrete_spec.json", ConcreteSpecificationTest.class);
@@ -128,7 +127,7 @@ public class ImporterFacadeTest {
 
   @Test
   public void importVerificationResult() throws Exception {
-    List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL, TypeFactory.enumOfName
+    List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL, TypeFactory.enumOfName
         ("enumD", "literalOne", "literalTwo"));
     ConstraintSpecification constraintSpec = ImporterFacade.importConstraintSpec(StvsApplication
             .class.getResourceAsStream("testSets/valid_1/constraint_spec_valid_1.xml"),
@@ -141,7 +140,7 @@ public class ImporterFacadeTest {
 
   @Test(expected = ImportException.class)
   public void importVerificationResultBadFormat() throws Exception {
-    List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL, TypeFactory.enumOfName
+    List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL, TypeFactory.enumOfName
         ("enumD", "literalOne", "literalTwo"));
     ConstraintSpecification constraintSpec = ImporterFacade.importConstraintSpec(StvsApplication
             .class.getResourceAsStream("testSets/valid_1/constraint_spec_valid_1.xml"),

@@ -7,6 +7,11 @@ import edu.kit.iti.formal.stvs.model.common.FreeVariableList;
 import edu.kit.iti.formal.stvs.model.common.SpecIoVariable;
 import edu.kit.iti.formal.stvs.model.common.VariableCategory;
 import edu.kit.iti.formal.stvs.model.expressions.*;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
 import edu.kit.iti.formal.stvs.model.table.ConstraintCell;
 import edu.kit.iti.formal.stvs.model.table.ConstraintDuration;
 import edu.kit.iti.formal.stvs.model.table.ConstraintSpecification;
@@ -280,7 +285,7 @@ public class RandomTableGenerator {
   private Type randomType() {
     int randomInt = random.nextInt(10);
     if (randomInt < 3) {
-      return TypeInt.INT;
+      return AnyIntType.INT;
     }
     if (randomInt < 6) {
       return TypeBool.BOOL;

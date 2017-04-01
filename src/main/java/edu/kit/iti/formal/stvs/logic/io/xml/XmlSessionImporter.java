@@ -7,9 +7,9 @@ import edu.kit.iti.formal.stvs.model.code.Code;
 import edu.kit.iti.formal.stvs.model.code.ParsedCode;
 import edu.kit.iti.formal.stvs.model.config.GlobalConfig;
 import edu.kit.iti.formal.stvs.model.config.History;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
 import edu.kit.iti.formal.stvs.model.table.ConstraintSpecification;
 import edu.kit.iti.formal.stvs.model.table.HybridSpecification;
@@ -81,7 +81,7 @@ public class XmlSessionImporter extends XmlImporter<StvsRootModel> {
       VerificationScenario scenario = new VerificationScenario(code);
 
       List<Type> typeContext = Optional.ofNullable(code.getParsedCode())
-          .map(ParsedCode::getDefinedTypes).orElse(Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+          .map(ParsedCode::getDefinedTypes).orElse(Arrays.asList(AnyIntType.INT, TypeBool.BOOL));
 
       // Tabs
       List<HybridSpecification> hybridSpecs = importTabs(importedSession, typeContext);

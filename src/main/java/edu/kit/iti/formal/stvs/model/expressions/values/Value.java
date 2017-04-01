@@ -1,4 +1,6 @@
-package edu.kit.iti.formal.stvs.model.expressions;
+package edu.kit.iti.formal.stvs.model.expressions.values;
+
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
 
 /**
  * The common interface for values of Expressions. Values are visitable and have a type.
@@ -6,25 +8,6 @@ package edu.kit.iti.formal.stvs.model.expressions;
  * @author Philipp
  */
 public interface Value {
-
-  public static interface Visitor<T> {
-    T visit(ValueInt value);
-    T visit(AbstractValue.ValueSInt value);
-    T visit(AbstractValue.ValueDInt value);
-    T visit(AbstractValue.ValueLInt value);
-
-    T visit(AbstractValue.ValueUInt value);
-    T visit(AbstractValue.ValueUSInt value);
-    T visit(AbstractValue.ValueUDInt value);
-    T visit(AbstractValue.ValueULInt value);
-
-    T visit(AbstractValue.ValueReal value);
-    T visit(AbstractValue.ValueDReal value);
-
-
-    T visit(ValueBool value);
-    T visit(ValueEnum value);
-  }
 
   /**
    * Visitor function for Values. Subclasses call the respective Functions.
@@ -35,7 +18,7 @@ public interface Value {
    * @param <R> the return type of the visitor functions
    * @return the return value of the visitor function called
    */
-  <T> T accept(Visitor<T> visitor);
+  <T> T accept(ValueVisitor<T> visitor);
 
   /**
    * Should return type of this value.

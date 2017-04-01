@@ -1,5 +1,9 @@
 package edu.kit.iti.formal.stvs.model.expressions;
 
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+
 import java.util.Map;
 
 /**
@@ -66,8 +70,8 @@ public class TypeChecker implements ExpressionVisitor<Type> {
         assertTypeEquality(TypeBool.BOOL, argType, unaryFunctionExpr);
         return TypeBool.BOOL;
       case UNARY_MINUS:
-        assertTypeEquality(TypeInt.INT, argType, unaryFunctionExpr);
-        return TypeInt.INT;
+        assertTypeEquality(AnyIntType.INT, argType, unaryFunctionExpr);
+        return AnyIntType.INT;
       default:
         return throwUnkownOperation(unaryFunctionExpr.getOperation().toString(), unaryFunctionExpr);
     }
@@ -85,9 +89,9 @@ public class TypeChecker implements ExpressionVisitor<Type> {
       case DIVISION:
       case MODULO:
       case POWER:
-        assertTypeEquality(TypeInt.INT, firstArgType, binaryFunctionExpr);
-        assertTypeEquality(TypeInt.INT, secondArgType, binaryFunctionExpr);
-        return TypeInt.INT;
+        assertTypeEquality(AnyIntType.INT, firstArgType, binaryFunctionExpr);
+        assertTypeEquality(AnyIntType.INT, secondArgType, binaryFunctionExpr);
+        return AnyIntType.INT;
       // (BOOL, BOOL) -> BOOL
       case AND:
       case OR:
@@ -100,8 +104,8 @@ public class TypeChecker implements ExpressionVisitor<Type> {
       case GREATER_EQUALS:
       case LESS_THAN:
       case LESS_EQUALS:
-        assertTypeEquality(TypeInt.INT, firstArgType, binaryFunctionExpr);
-        assertTypeEquality(TypeInt.INT, secondArgType, binaryFunctionExpr);
+        assertTypeEquality(AnyIntType.INT, firstArgType, binaryFunctionExpr);
+        assertTypeEquality(AnyIntType.INT, secondArgType, binaryFunctionExpr);
         return TypeBool.BOOL;
       // (a, a) -> BOOL
       case EQUALS:

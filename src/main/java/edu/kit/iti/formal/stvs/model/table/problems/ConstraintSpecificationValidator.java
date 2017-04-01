@@ -8,7 +8,7 @@ import edu.kit.iti.formal.stvs.model.common.ValidFreeVariable;
 import edu.kit.iti.formal.stvs.model.common.ValidIoVariable;
 import edu.kit.iti.formal.stvs.model.expressions.Expression;
 import edu.kit.iti.formal.stvs.model.expressions.LowerBoundedInterval;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
 import edu.kit.iti.formal.stvs.model.expressions.TypeChecker;
 import edu.kit.iti.formal.stvs.model.table.ConstraintCell;
 import edu.kit.iti.formal.stvs.model.table.ConstraintSpecification;

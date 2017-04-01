@@ -1,5 +1,7 @@
 package edu.kit.iti.formal.stvs.model.expressions;
 
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+
 import java.util.Arrays;
 
 /**

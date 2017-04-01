@@ -1,7 +1,7 @@
 package edu.kit.iti.formal.stvs.model.table;
 
-import edu.kit.iti.formal.stvs.model.expressions.ValueBool;
-import edu.kit.iti.formal.stvs.model.expressions.ValueInt;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueInt;
 import javafx.beans.property.SimpleStringProperty;
 import org.junit.Before;
 import org.junit.Test;

@@ -28,7 +28,7 @@ public class SmtModelTest {
         .replace(" ", "\\s+")
         .replace("(", "\\(")
                 .replace(")", "\\)")+"\\s?";
-    assertTrue("Tried to match <<"+string+">> with "+escapedPattern,
+    assertTrue("Tried to accept <<"+string+">> with "+escapedPattern,
         Pattern.matches(escapedPattern, string));
   }
 

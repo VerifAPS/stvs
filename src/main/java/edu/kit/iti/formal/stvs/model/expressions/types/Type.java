@@ -1,6 +1,6 @@
-package edu.kit.iti.formal.stvs.model.expressions;
+package edu.kit.iti.formal.stvs.model.expressions.types;
 
-import sun.jvm.hotspot.debugger.cdbg.IntType;
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
 
 import java.util.Optional;
 
@@ -10,44 +10,43 @@ import java.util.Optional;
  * @author Philipp
  */
 public interface Type {
-  public static interface Visitor<T> {
-    T visit(TypeInt type);
-  }
 
-  <R> R accept(Visitor<R> visitor);
+    <R> R accept(TypeVisitor<R> visitor);
 
-  /**
-   * Finds out whether this type checks against another type, which means any value of this type can
-   * be used as a value of the other type.
-   * This mostly means type equality or a supertype relation.
-   *
-   * @param other the other type ot subsume.
-   * @return whether it does subsume the other type or not.
-   */
-  boolean checksAgainst(Type other);
+    /**
+     * Finds out whether this type checks against another type,
+     * which means any value of this type can be used as a value of the other type.
+     * This mostly means type equality or a supertype relation.
+     *
+     * @param other the other type ot subsume.
+     * @return whether it does subsume the other type or not.
+     */
+    boolean checksAgainst(Type other);
 
-  /**
-   * Get the type name of this type in a human-readable format (in contrast to this classes'
-   * toString()). This can be used to show the type in a GUI, for example.
-   *
-   * @return a string that should accept the type name as it is usually used in st-code.
-   */
-  String getTypeName();
+    /**
+     * Get the type name of this type in a human-readable format (in contrast to this classes'
+     * toString()). This can be used to show the type in a GUI, for example.
+     *
+     * @return a string that should accept the type name as it is usually used in st-code.
+     */
+    String getTypeName();
 
-  /**
-   * Parse a literal of this type to a value. Can be used for parsing user-input into TextFields
-   * when the type is known, for example.
-   *
-   * @param literal the literal string to parse
-   * @return optionally a resulting value
-   */
-  Optional<Value> parseLiteral(String literal);
+    /**
+     * Parse a literal of this type to a value. Can be used for parsing user-input into TextFields
+     * when the type is known, for example.
+     *
+     * @param literal the literal string to parse
+     * @return optionally a resulting value
+     */
+    Optional<Value> parseLiteral(String literal);
 
-  /**
-   * For any <tt>{@link Type} type</tt> the following must be true:
-   * <tt>type.generateDefaultValue().getErrorType().checksAgainst(type)</tt>
-   *
-   * @return a default value of this given type.
-   */
-  Value generateDefaultValue();
+    /**
+     * For any <tt>{@link Type} type</tt> the following must be true:
+     * <tt>type.generateDefaultValue().getErrorType().checksAgainst(type)</tt>
+     *
+     * @return a default value of this given type.
+     */
+    Value generateDefaultValue();
+
+    String getSMTType();
 }

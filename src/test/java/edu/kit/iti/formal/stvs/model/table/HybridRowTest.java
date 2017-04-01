@@ -3,10 +3,10 @@ package edu.kit.iti.formal.stvs.model.table;
 import edu.kit.iti.formal.stvs.StvsApplication;
 import edu.kit.iti.formal.stvs.logic.io.ImportException;
 import edu.kit.iti.formal.stvs.logic.io.ImporterFacade;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.expressions.TypeFactory;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,7 +39,7 @@ public class HybridRowTest {
       assertEquals(0, cell.counterExamplesProperty().size());
     }
     assertEquals(0, hybridRow.getDuration().counterExamplesProperty().size());
-    List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL, TypeFactory.enumOfName
+    List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL, TypeFactory.enumOfName
         ("enumD", "literalOne", "literalTwo"));
     ConcreteSpecification concreteSpec = ImporterFacade.importConcreteSpec(StvsApplication.class
         .getResourceAsStream("testSets/valid_1/concrete_spec_valid_1.xml"), ImporterFacade

@@ -118,7 +118,7 @@ public class HybridSpecification extends ConstraintSpecification {
    * counterexample.
    *
    * @param counterExample the concrete specification to be shown in-place in the gui
-   * @throws IllegalArgumentException if the given concrete instance's column headers don't match
+   * @throws IllegalArgumentException if the given concrete instance's column headers don't accept
    *                                  this specification's column headers
    */
   public void setCounterExample(ConcreteSpecification counterExample) {
@@ -161,7 +161,7 @@ public class HybridSpecification extends ConstraintSpecification {
    * the {@link TimingDiagramCollectionController} to view a timing diagram.</p>
    *
    * @param concreteInstance the concretized constraint specification
-   * @throws IllegalArgumentException if the given concrete instance's column headers don't match
+   * @throws IllegalArgumentException if the given concrete instance's column headers don't accept
    *                                  this specification's column headers
    */
   public void setConcreteInstance(ConcreteSpecification concreteInstance) {

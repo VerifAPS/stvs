@@ -6,10 +6,10 @@ import edu.kit.iti.formal.stvs.logic.io.ImportException;
 import edu.kit.iti.formal.stvs.logic.io.ImporterFacade;
 import edu.kit.iti.formal.stvs.model.code.Code;
 import edu.kit.iti.formal.stvs.model.config.GlobalConfig;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.expressions.TypeFactory;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
 import edu.kit.iti.formal.stvs.model.table.ConstraintSpecification;
 import javafx.beans.value.ObservableValue;
 import junit.framework.AssertionFailedError;
@@ -102,7 +102,7 @@ public class VerificationScenarioTest {
     @Override
     public void changed(ObservableValue<? extends VerificationResult> observableValue,
                         VerificationResult old, VerificationResult newResult) {
-      List<Type> typeContext = Arrays.asList(TypeInt.INT, TypeBool.BOOL, TypeFactory.enumOfName
+      List<Type> typeContext = Arrays.asList(AnyIntType.INT, TypeBool.BOOL, TypeFactory.enumOfName
           ("enumD", "literalOne", "literalTwo"));
       try {
         ConstraintSpecification constraintSpec = ImporterFacade.importConstraintSpec(StvsApplication

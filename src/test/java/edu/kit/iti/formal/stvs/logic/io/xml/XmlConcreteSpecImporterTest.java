@@ -1,10 +1,9 @@
 package edu.kit.iti.formal.stvs.logic.io.xml;
 
 import com.google.gson.JsonElement;
-import edu.kit.iti.formal.stvs.logic.io.ExportException;
 import edu.kit.iti.formal.stvs.logic.io.ImportException;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecificationTest;
 import edu.kit.iti.formal.stvs.model.table.JsonTableParser;
@@ -25,7 +24,7 @@ public class XmlConcreteSpecImporterTest {
 
   @Before
   public void setUp() throws ImportException {
-    importer = new XmlConcreteSpecImporter(Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+    importer = new XmlConcreteSpecImporter(Arrays.asList(AnyIntType.INT, TypeBool.BOOL));
   }
 
   @Test

@@ -3,7 +3,7 @@ package edu.kit.iti.formal.stvs.model.table.problems;
 import edu.kit.iti.formal.stvs.model.common.CodeIoVariable;
 import edu.kit.iti.formal.stvs.model.common.SpecIoVariable;
 import edu.kit.iti.formal.stvs.model.common.ValidIoVariable;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
 import edu.kit.iti.formal.stvs.model.expressions.VariableExpr;
 
 import java.util.Collection;
@@ -77,11 +77,11 @@ public class InvalidIoVarProblem extends ColumnProblem {
   private static String createMessageForType(ErrorType errorType) {
     switch (errorType) {
       case NAME_MISMATCH:
-        return "Column name in table doesn't match any column name in code";
+        return "Column name in table doesn't accept any column name in code";
       case TYPE_MISMATCH:
-        return "Column type in table doesn't match column type in code";
+        return "Column type in table doesn't accept column type in code";
       case CATEGORY_MISMATCH:
-        return "Column category in table doesn't match column category in code";
+        return "Column category in table doesn't accept column category in code";
       case NAME_INVALID:
         return "Column name is not a valid identifier";
       case TYPE_UNKNOWN:

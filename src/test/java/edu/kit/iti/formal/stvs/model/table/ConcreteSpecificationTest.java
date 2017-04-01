@@ -3,10 +3,10 @@ package edu.kit.iti.formal.stvs.model.table;
 import edu.kit.iti.formal.stvs.logic.io.ImportException;
 import edu.kit.iti.formal.stvs.logic.io.ImporterFacade;
 import edu.kit.iti.formal.stvs.logic.io.xml.XmlConcreteSpecImporter;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
-import edu.kit.iti.formal.stvs.model.expressions.ValueBool;
-import edu.kit.iti.formal.stvs.model.expressions.ValueInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueInt;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,7 +30,7 @@ public class ConcreteSpecificationTest {
   public void setUp() throws Exception {
     concreteSpec = ImporterFacade.importConcreteSpec(XmlConcreteSpecImporter.class.
             getResourceAsStream("spec_concrete_valid_1.xml"), ImporterFacade.ImportFormat.XML,
-        Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+        Arrays.asList(AnyIntType.INT, TypeBool.BOOL));
   }
 
   @Test
@@ -87,11 +87,11 @@ public class ConcreteSpecificationTest {
   public void testEquals() throws ImportException {
     ConcreteSpecification identicalSpec = ImporterFacade.importConcreteSpec(XmlConcreteSpecImporter.class.
             getResourceAsStream("spec_concrete_valid_1.xml"), ImporterFacade.ImportFormat.XML,
-        Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+        Arrays.asList(AnyIntType.INT, TypeBool.BOOL));
     assertEquals(identicalSpec, concreteSpec);
     ConcreteSpecification differentSpec = ImporterFacade.importConcreteSpec(XmlConcreteSpecImporter.class.
             getResourceAsStream("spec_concrete_empty.xml"), ImporterFacade.ImportFormat.XML,
-        Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+        Arrays.asList(AnyIntType.INT, TypeBool.BOOL));
     assertNotEquals(differentSpec, concreteSpec);
     assertNotEquals(null, concreteSpec);
   }

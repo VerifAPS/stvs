@@ -1,4 +1,8 @@
-package edu.kit.iti.formal.stvs.model.expressions;
+package edu.kit.iti.formal.stvs.model.expressions.values;
+
+import edu.kit.iti.formal.stvs.model.expressions.Expression;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 
 /**
  * Runtime-representation for boolean values of {@link Expression}s.
@@ -21,7 +25,7 @@ public class ValueBool extends AbstractValue {
         this.value = value;
     }
 
-    @Override public <T> T accept(Visitor<T> visitor) {
+    @Override public <T> T accept(ValueVisitor<T> visitor) {
         return visitor.visit(this);
     }
 

@@ -19,14 +19,14 @@ public class BitvectorUtils {
    * @param length Number of digits of output
    * @return hex representation with following format: #xABCD...
    */
-  public static String hexFromInt(int integer, int length) {
+  public static String hexFromInt(long integer, int length) {
     if (integer < 0) {
       integer = (int) (Math.pow(16, length)) + integer;
     }
     String result = "";
     for (int i = 0; i < length; i++) {
-      result = HEX_CHARS[integer % 16] + result;
-      integer /= 16;
+      result = HEX_CHARS[(int)(integer & 0xF)] + result;
+      integer >>= 4;
     }
     return "#x" + result;
   }

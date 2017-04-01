@@ -3,10 +3,10 @@ package edu.kit.iti.formal.stvs.model.table;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import edu.kit.iti.formal.stvs.model.common.*;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeEnum;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
 import edu.kit.iti.formal.stvs.model.table.problems.InvalidIoVarProblem;
 import edu.kit.iti.formal.stvs.util.MapUtil;
 import javafx.beans.Observable;
@@ -97,7 +97,7 @@ public class JsonTableParser {
     ConcreteSpecification concreteSpec = new ConcreteSpecification(isCounterExample);
 
     List<Type> typeContext = new ArrayList<>();
-    typeContext.add(TypeInt.INT);
+    typeContext.add(AnyIntType.INT);
     typeContext.add(TypeBool.BOOL);
     typeContext.addAll(types);
     Map<String, Type> typesByName = typeContext.stream()
@@ -210,7 +210,7 @@ public class JsonTableParser {
   private static Type typeFromString(String input) {
     switch (input) {
       case "INT":
-        return TypeInt.INT;
+        return AnyIntType.INT;
       case "BOOL":
         return TypeBool.BOOL;
       default:

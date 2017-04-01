@@ -5,9 +5,9 @@ import edu.kit.iti.formal.stvs.model.StvsRootModel;
 import edu.kit.iti.formal.stvs.model.code.Code;
 import edu.kit.iti.formal.stvs.model.code.ParsedCode;
 import edu.kit.iti.formal.stvs.model.common.CodeIoVariable;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.verification.VerificationResult;
 import edu.kit.iti.formal.stvs.util.ProcessCreationException;
 import edu.kit.iti.formal.stvs.view.common.AlertFactory;
@@ -110,7 +110,7 @@ public class StvsRootController implements Controller {
 
   private List<Type> typesFromCode(ParsedCode parsedCode) {
     if (parsedCode == null) {
-      return Arrays.asList(TypeInt.INT, TypeBool.BOOL);
+      return Arrays.asList(AnyIntType.INT, TypeBool.BOOL);
     }
     return parsedCode.getDefinedTypes();
   }

@@ -7,10 +7,10 @@ import edu.kit.iti.formal.stvs.model.common.FreeVariableListValidator;
 import edu.kit.iti.formal.stvs.model.common.FreeVariableProblem;
 import edu.kit.iti.formal.stvs.model.common.ValidFreeVariable;
 import edu.kit.iti.formal.stvs.model.config.GlobalConfig;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeEnum;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
 import edu.kit.iti.formal.stvs.model.table.ConstraintSpecification;
 import edu.kit.iti.formal.stvs.model.table.ValidSpecification;
 import edu.kit.iti.formal.stvs.model.table.problems.ConstraintSpecificationValidator;
@@ -47,7 +47,7 @@ public class TestUtils {
 
   public static ValidSpecification importValidSpec(InputStream source, TypeEnum... enumTypes) {
     List<Type> typeContext = new ArrayList<>();
-    typeContext.add(TypeInt.INT);
+    typeContext.add(AnyIntType.INT);
     typeContext.add(TypeBool.BOOL);
     for (TypeEnum enumType : enumTypes) {
       typeContext.add(enumType);
@@ -82,7 +82,7 @@ public class TestUtils {
 
   public static List<ValidFreeVariable> importValidFreeVariables(InputStream source, TypeEnum... enumTypes) {
     List<Type> typeContext = new ArrayList<>();
-    typeContext.add(TypeInt.INT);
+    typeContext.add(AnyIntType.INT);
     typeContext.add(TypeBool.BOOL);
     for (TypeEnum enumType : enumTypes) {
       typeContext.add(enumType);

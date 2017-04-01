@@ -3,10 +3,10 @@ package edu.kit.iti.formal.stvs.view.spec.variables;
 import edu.kit.iti.formal.stvs.model.common.FreeVariable;
 import edu.kit.iti.formal.stvs.model.common.FreeVariableList;
 import edu.kit.iti.formal.stvs.model.common.FreeVariableListValidator;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeEnum;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import edu.kit.iti.formal.stvs.Demo;
 import edu.kit.iti.formal.stvs.view.JavaFxTest;
 import javafx.beans.Observable;
@@ -42,7 +42,7 @@ public class VariableCollectionDemo {
 
   private List<Node> variableViewScene() {
     List<Type> types = Arrays.asList(
-        TypeInt.INT,
+        AnyIntType.INT,
         TypeBool.BOOL,
         new TypeEnum("COLORS", Arrays.asList("red", "green", "blue"))
     );

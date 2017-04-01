@@ -2,10 +2,10 @@ package edu.kit.iti.formal.stvs.model.code;
 
 import edu.kit.iti.formal.stvs.model.common.CodeIoVariable;
 import edu.kit.iti.formal.stvs.model.common.VariableCategory;
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeEnum;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import org.antlr.v4.runtime.Token;
 import org.apache.commons.io.IOUtils;
 import org.junit.Ignore;
@@ -83,7 +83,7 @@ public class CodeTest {
     Type myEnum = new TypeEnum("MY_ENUM", Arrays.asList("possible", "values", "enum"));
     Set<Type> expectedDefinedTypes = new HashSet<>();
     expectedDefinedTypes.add(TypeBool.BOOL);
-    expectedDefinedTypes.add(TypeInt.INT);
+    expectedDefinedTypes.add(AnyIntType.INT);
     expectedDefinedTypes.add(myEnum);
     assertCollectionsEqual(expectedDefinedTypes, parsed.getDefinedTypes());
   }

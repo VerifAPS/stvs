@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
 /**
  * <p>
  * The view for a config dialog. Includes numerous text fields, checkboxes and number text fields
- * that match the fields of a {@link edu.kit.iti.formal.stvs.model.config.GlobalConfig}.
+ * that accept the fields of a {@link edu.kit.iti.formal.stvs.model.config.GlobalConfig}.
  * </p>
  *
  * <p>

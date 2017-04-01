@@ -1,6 +1,6 @@
 package edu.kit.iti.formal.stvs.model.common;
 
-import edu.kit.iti.formal.stvs.model.expressions.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
 import edu.kit.iti.formal.stvs.model.table.ValidSpecification;
 
 /**

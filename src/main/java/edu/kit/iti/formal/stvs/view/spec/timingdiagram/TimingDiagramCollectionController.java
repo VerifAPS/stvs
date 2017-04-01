@@ -2,6 +2,7 @@ package edu.kit.iti.formal.stvs.view.spec.timingdiagram;
 
 import edu.kit.iti.formal.stvs.model.common.Selection;
 import edu.kit.iti.formal.stvs.model.common.ValidIoVariable;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeLambdaVisitor;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
 import edu.kit.iti.formal.stvs.view.Controller;
 import edu.kit.iti.formal.stvs.view.ViewUtils;
@@ -80,13 +81,21 @@ public class TimingDiagramCollectionController implements Controller {
    */
   private void createTimingDiagram(ConcreteSpecification concreteSpec,
       ValidIoVariable validIoVariable) {
-    Pair<TimingDiagramController, Axis> diagramAxisPair = validIoVariable.getValidType().match(
-        () -> TimingDiagramController.createIntegerTimingDiagram(concreteSpec, validIoVariable,
-            view.getXaxis(), selection, activated),
-        () -> TimingDiagramController.createBoolTimingDiagram(concreteSpec, validIoVariable,
-            view.getXaxis(), selection, activated),
-        (e) -> TimingDiagramController.createEnumTimingDiagram(concreteSpec, validIoVariable, e,
-            view.getXaxis(), selection, activated));
+
+      TypeLambdaVisitor<Pair<TimingDiagramController, Axis>> visitor = new TypeLambdaVisitor<>();
+
+      visitor.setValueIntFunction(
+              (type) -> TimingDiagramController.createIntegerTimingDiagram(concreteSpec, validIoVariable,
+                      view.getXaxis(), selection, activated));
+      visitor.setValueBoolFunction(
+              (type) -> TimingDiagramController.createBoolTimingDiagram(concreteSpec, validIoVariable,
+                      view.getXaxis(), selection, activated));
+      visitor.setValueEnumFunction(
+              (e) -> TimingDiagramController.createEnumTimingDiagram(concreteSpec, validIoVariable, e,
+                    view.getXaxis(), selection, activated));
+
+
+    Pair<TimingDiagramController, Axis> diagramAxisPair = validIoVariable.getValidType().accept(visitor);
     TimingDiagramView timingDiagramView = diagramAxisPair.getLeft().getView();
 
     if (concreteSpec.isCounterExample()) {

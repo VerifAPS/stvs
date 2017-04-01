@@ -5,9 +5,9 @@ import edu.kit.iti.formal.stvs.logic.io.ImportException;
 import edu.kit.iti.formal.stvs.logic.io.ImporterFacade;
 import edu.kit.iti.formal.stvs.logic.io.xml.XmlConcreteSpecImporter;
 import edu.kit.iti.formal.stvs.model.common.Selection;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import edu.kit.iti.formal.stvs.model.expressions.TypeFactory;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,7 +31,7 @@ public class HybridSpecificationTest {
         .ImportFormat.XML);
     concreteInstance = ImporterFacade.importConcreteSpec
         (StvsApplication.class.getResourceAsStream("testSets/valid_1/concrete_spec_valid_1.xml"),
-            ImporterFacade.ImportFormat.XML, Arrays.asList(TypeInt.INT, TypeBool.BOOL,
+            ImporterFacade.ImportFormat.XML, Arrays.asList(AnyIntType.INT, TypeBool.BOOL,
             TypeFactory.enumOfName("enumD", "literalOne", "literalTwo")));
   }
 
@@ -66,7 +66,7 @@ public class HybridSpecificationTest {
   public void testSetConcreteInstanceInvalid() throws ImportException {
     ConcreteSpecification badConcreteSpec = ImporterFacade.importConcreteSpec
         (XmlConcreteSpecImporter.class.getResourceAsStream("spec_concrete_empty.xml"),
-            ImporterFacade.ImportFormat.XML, Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+            ImporterFacade.ImportFormat.XML, Arrays.asList(AnyIntType.INT, TypeBool.BOOL));
     hybridSpec.setConcreteInstance(badConcreteSpec);
   }
 
@@ -90,7 +90,7 @@ public class HybridSpecificationTest {
         .ImportFormat.XML);
     ConcreteSpecification identicalConcrete = ImporterFacade.importConcreteSpec
         (StvsApplication.class.getResourceAsStream("testSets/valid_1/concrete_spec_valid_1.xml"),
-            ImporterFacade.ImportFormat.XML, Arrays.asList(TypeInt.INT, TypeBool.BOOL,
+            ImporterFacade.ImportFormat.XML, Arrays.asList(AnyIntType.INT, TypeBool.BOOL,
             TypeFactory.enumOfName("enumD", "literalOne", "literalTwo")));
     assertEquals(hybridSpec, identical);
     hybridSpec.setConcreteInstance(concreteInstance);

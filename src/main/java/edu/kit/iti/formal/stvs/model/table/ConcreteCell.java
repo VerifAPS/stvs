@@ -1,6 +1,6 @@
 package edu.kit.iti.formal.stvs.model.table;
 
-import edu.kit.iti.formal.stvs.model.expressions.Value;
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
 import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleStringProperty;
 

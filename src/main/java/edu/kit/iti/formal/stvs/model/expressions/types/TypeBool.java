@@ -1,4 +1,7 @@
-package edu.kit.iti.formal.stvs.model.expressions;
+package edu.kit.iti.formal.stvs.model.expressions.types;
+
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
 
 import java.util.Optional;
 
@@ -14,15 +17,13 @@ public class TypeBool implements Type {
 
   private TypeBool() {}
 
-  @Override
-  public <R> R accept(TypeIntegerHandler<R> matchIntType, TypeBooleanHandler<R> matchBoolType,
-      TypeEnumHandler<R> matchEnumType) {
-    return matchBoolType.handle();
+  @Override public <R> R accept(TypeVisitor<R> visitor) {
+    return visitor.visit(this);
   }
 
   @Override
   public boolean checksAgainst(Type other) {
-    return other.accept(() -> false, () -> true, (otherEnum) -> false);
+    return equals(other);
   }
 
   @Override
@@ -44,6 +45,10 @@ public class TypeBool implements Type {
   @Override
   public Value generateDefaultValue() {
     return ValueBool.FALSE;
+  }
+
+  @Override public String getSMTType() {
+    return "Bool";
   }
 
   public String toString() {

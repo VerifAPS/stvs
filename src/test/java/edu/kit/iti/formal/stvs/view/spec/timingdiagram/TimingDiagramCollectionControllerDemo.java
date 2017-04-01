@@ -2,8 +2,8 @@ package edu.kit.iti.formal.stvs.view.spec.timingdiagram;
 
 import edu.kit.iti.formal.stvs.logic.io.xml.XmlConcreteSpecImporter;
 import edu.kit.iti.formal.stvs.model.common.Selection;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
 import edu.kit.iti.formal.stvs.model.table.ConcreteSpecification;
 import edu.kit.iti.formal.stvs.Demo;
 import edu.kit.iti.formal.stvs.view.JavaFxTest;
@@ -32,7 +32,8 @@ public class TimingDiagramCollectionControllerDemo {
 
   private Scene simpleScene() {
     try {
-      XmlConcreteSpecImporter importer = new XmlConcreteSpecImporter(Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+      XmlConcreteSpecImporter importer = new XmlConcreteSpecImporter(Arrays.asList(
+              AnyIntType.INT, TypeBool.BOOL));
       FileInputStream inputStream = new FileInputStream(new File
           (TimingDiagramCollectionControllerDemo.class.getResource("spec_concrete_valid_1.xml").toURI()));
       ConcreteSpecification importedSpec = importer.doImport(inputStream);

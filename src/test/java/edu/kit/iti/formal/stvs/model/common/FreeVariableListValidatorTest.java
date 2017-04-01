@@ -1,8 +1,8 @@
 package edu.kit.iti.formal.stvs.model.common;
 
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.TypeBool;
-import edu.kit.iti.formal.stvs.model.expressions.TypeInt;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.junit.Test;
@@ -68,7 +68,7 @@ public class FreeVariableListValidatorTest {
   @Test
   public void testRevalidate() throws Exception {
     ObjectProperty<List<Type>> typeContext = new SimpleObjectProperty<>(
-        Arrays.asList(TypeInt.INT, TypeBool.BOOL));
+        Arrays.asList(AnyIntType.INT, TypeBool.BOOL));
 
     FreeVariableListValidator validator = new FreeVariableListValidator(
         typeContext,

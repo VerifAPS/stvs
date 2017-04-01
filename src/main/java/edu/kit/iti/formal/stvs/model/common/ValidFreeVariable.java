@@ -1,7 +1,7 @@
 package edu.kit.iti.formal.stvs.model.common;
 
-import edu.kit.iti.formal.stvs.model.expressions.Type;
-import edu.kit.iti.formal.stvs.model.expressions.Value;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
 
 /**
  * A valid free variable. Its name is a valid identifier, its type is a parsed {@link Type}

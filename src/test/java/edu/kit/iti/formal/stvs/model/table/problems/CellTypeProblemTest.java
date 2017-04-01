@@ -1,13 +1,15 @@
 package edu.kit.iti.formal.stvs.model.table.problems;
 
 import edu.kit.iti.formal.stvs.model.expressions.*;
-import edu.kit.iti.formal.stvs.model.table.ConstraintCell;
+import edu.kit.iti.formal.stvs.model.expressions.types.Type;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeBool;
+import edu.kit.iti.formal.stvs.model.expressions.types.AnyIntType;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueInt;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static edu.kit.iti.formal.stvs.model.expressions.SimpleExpressions.and;
@@ -34,7 +36,7 @@ public class CellTypeProblemTest {
   @Test
   public void tryTypeCheckCellExpression() throws Exception {
     Map<String, Type> typeMap = new HashMap<>();
-    typeMap.put("A", TypeInt.INT);
+    typeMap.put("A", AnyIntType.INT);
     typeMap.put("B", TypeBool.BOOL);
     TypeChecker typeChecker = new TypeChecker(typeMap);
     Expression problematicCell = and(literal(2), literal(true));

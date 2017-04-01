@@ -1,5 +1,10 @@
 package edu.kit.iti.formal.stvs.model.expressions;
 
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueBool;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueEnum;
+import edu.kit.iti.formal.stvs.model.expressions.values.ValueInt;
+
 /**
  * Created by philipp on 17.01.17.
  */

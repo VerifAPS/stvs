@@ -1,5 +1,7 @@
 package edu.kit.iti.formal.stvs.model.expressions;
 
+import edu.kit.iti.formal.stvs.model.expressions.values.Value;
+
 /**
  * The class for expressions that are constant. Examples are <tt>42</tt>, <tt>TRUE</tt> or
  * <tt>my_enum_constructor</tt>.

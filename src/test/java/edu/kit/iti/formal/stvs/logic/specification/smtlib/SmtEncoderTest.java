@@ -5,12 +5,10 @@ import edu.kit.iti.formal.stvs.TestUtils;
 import edu.kit.iti.formal.stvs.logic.io.ImportException;
 import edu.kit.iti.formal.stvs.logic.io.xml.XmlSessionImporterTest;
 import edu.kit.iti.formal.stvs.model.common.ValidFreeVariable;
-import edu.kit.iti.formal.stvs.model.expressions.TypeEnum;
+import edu.kit.iti.formal.stvs.model.expressions.types.TypeEnum;
 import edu.kit.iti.formal.stvs.model.table.ValidSpecification;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.junit.experimental.theories.suppliers.TestedOn;
-import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.io.InputStream;
