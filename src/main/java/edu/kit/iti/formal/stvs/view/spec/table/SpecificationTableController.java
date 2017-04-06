@@ -30,6 +30,7 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
@@ -63,6 +64,7 @@ public class SpecificationTableController implements Controller {
   private final ConstraintSpecificationValidator validator;
   private final TableColumn<HybridRow, String> durations;
   private final GlobalConfig config;
+  private Node selectedCell;
 
   /**
    * Create a new SpecificationTableController.
@@ -169,7 +171,8 @@ public class SpecificationTableController implements Controller {
     MenuItem comment = new MenuItem("Comment ...");
     comment.setAccelerator(KeyCombination.keyCombination("Ctrl+k"));
     comment.setOnAction(event -> {
-      new CommentPopupManager(hybridSpec, hybridSpec.isEditable());
+      System.out.println("sfdsfdsafsdafdsaf");
+      //new CommentPopupManager(hybridSpec, hybridSpec.isEditable());
     });
     return new ContextMenu(comment);
   }
@@ -206,13 +209,17 @@ public class SpecificationTableController implements Controller {
     addNewColumn.setOnAction(
         event -> new IoVariableChooserDialog(codeIoVariables, hybridSpec.getColumnHeaders())
             .showAndWait().ifPresent(this::addNewColumn));
+
     comment.setOnAction(event -> {
       int index = tableView.getSelectionModel().getSelectedIndex();
       if (index < 0) {
         return;
       }
-      CommentPopupManager popupController =
-          new CommentPopupManager(hybridSpec.getRows().get(index), hybridSpec.isEditable());
+
+      CommentPopup.show(selectedCell,
+              hybridSpec.getRows().get(index), hybridSpec.isEditable(),
+
+              );
     });
     comment.setAccelerator(KeyCodeCombination.keyCombination("Ctrl+k"));
     insertRow.disableProperty().bind(Bindings.not(tableView.editableProperty()));
@@ -238,7 +245,8 @@ public class SpecificationTableController implements Controller {
     commentColumn.setOnAction(event -> {
       String specIoVariableName = (String) column.getUserData();
       SpecIoVariable commentable = hybridSpec.getColumnHeaderByName(specIoVariableName);
-      new CommentPopupManager(commentable, tableView.isEditable());
+      //TODO
+      //new CommentPopupManager(commentable, tableView.isEditable());
     });
     changeColumn.disableProperty().bind(Bindings.not(tableView.editableProperty()));
     removeColumn.disableProperty().bind(Bindings.not(tableView.editableProperty()));

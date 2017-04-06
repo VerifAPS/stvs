@@ -44,7 +44,7 @@ repositories {
     maven {
         url "http://formal.iti.kit.edu/maven2/"
     }
-    mavenLocal()
+    //mavenLocal()
 }
 dependencies {
     compile 'org.apache.commons:commons-collections4:4.0'
@@ -55,6 +55,7 @@ dependencies {
     compile 'org.fxmisc.richtext:richtextfx:0.6.10'
     compile 'org.antlr:antlr4-runtime:4.6'
     compile 'edu.kit.iti.formal:iec61131lang:0.1.13'
+    compile 'org.controlsfx:controlsfx:8.40.12'
     compile group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
     compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.2.3-1'
 

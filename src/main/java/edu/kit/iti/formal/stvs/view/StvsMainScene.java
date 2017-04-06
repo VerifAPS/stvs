@@ -59,7 +59,8 @@ public class StvsMainScene {
 
   private VBox createVBox() {
     VBox vbox = new VBox();
-    vbox.getChildren().addAll(menuBarController.getView(), rootController.getView());
+    vbox.getChildren().addAll(menuBarController.getView(),
+            rootController.getView());
     VBox.setVgrow(rootController.getView(), Priority.ALWAYS);
 
     return vbox;

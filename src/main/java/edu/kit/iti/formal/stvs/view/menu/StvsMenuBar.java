@@ -44,19 +44,19 @@ public class StvsMenuBar extends MenuBar {
    */
   public StvsMenuBar() {
     // create top-level menus
-    file = new Menu("File");
-    examples = new Menu("Examples");
-    edit = new Menu("Edit");
-    help = new Menu("Help");
+    file = new Menu("_File");
+    examples = new Menu("_Examples");
+    edit = new Menu("_Edit");
+    help = new Menu("_Help");
 
     // create menu-items
-    open = new MenuItem("Open");
+    open = new MenuItem("_Open");
     open.setAccelerator(KeyCombination.keyCombination("Ctrl+o"));
     openOther = new Menu("Open ...");
     openSpec = new MenuItem("Open Specification");
     openCode = new MenuItem("Open Code");
     openSession = new MenuItem("Open Session");
-    openRecent = new Menu("Open Recent...");
+    openRecent = new Menu("Open _Recent...");
     openRecentItems = new ArrayList<>();
 
     saveCode = new MenuItem("Save Code");
@@ -69,7 +69,7 @@ public class StvsMenuBar extends MenuBar {
     saveAll.setAccelerator(KeyCombination.keyCombination("Ctrl+s"));
 
     config = new MenuItem("Preferences");
-    config.setAccelerator(KeyCombination.keyCombination("Ctrl+,"));
+    config.setAccelerator(KeyCombination.keyCombination("Ctrl+P"));
 
 
     newCode = new MenuItem("New Code");
