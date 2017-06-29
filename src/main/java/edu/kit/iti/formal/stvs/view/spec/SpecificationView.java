@@ -3,7 +3,6 @@ package edu.kit.iti.formal.stvs.view.spec;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import edu.kit.iti.formal.stvs.model.table.ConstraintSpecification;
-import edu.kit.iti.formal.stvs.model.table.HybridRow;
 import edu.kit.iti.formal.stvs.view.ViewUtils;
 import edu.kit.iti.formal.stvs.view.spec.table.SpecificationTableView;
 import edu.kit.iti.formal.stvs.view.spec.timingdiagram.TimingDiagramCollectionView;
@@ -15,7 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -23,6 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import org.controlsfx.control.spreadsheet.SpreadsheetView;
 
 /**
  * This is the view that displays a specification.
@@ -110,7 +109,7 @@ public class SpecificationView extends VBox implements Lockable {
     startConcretizerButton.setGraphic(icon);
   }
 
-  public TableView<HybridRow> getTable() {
+  public SpreadsheetView getTable() {
     return tableView.getTableView();
   }
 

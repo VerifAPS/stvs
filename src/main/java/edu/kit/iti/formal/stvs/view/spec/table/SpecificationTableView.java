@@ -2,13 +2,12 @@ package edu.kit.iti.formal.stvs.view.spec.table;
 
 import edu.kit.iti.formal.stvs.model.table.HybridRow;
 import edu.kit.iti.formal.stvs.view.ViewUtils;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import org.controlsfx.control.spreadsheet.SpreadsheetView;
 
 /**
  * The view responsible for displaying
@@ -18,7 +17,7 @@ import javafx.scene.layout.VBox;
  */
 public class SpecificationTableView extends VBox {
   private Label header;
-  private TableView<HybridRow> tableView;
+  private SpreadsheetView tableView;
 
 
   /**
@@ -27,11 +26,11 @@ public class SpecificationTableView extends VBox {
    * @param header The header of this view
    * @param tableView The underlying {@link TableView} of {@link HybridRow}s
    */
-  public SpecificationTableView(Label header, TableView<HybridRow> tableView) {
+  public SpecificationTableView(Label header, SpreadsheetView tableView) {
     this.header = header;
     header.getStyleClass().add("spec-header");
     this.tableView = tableView;
-    tableView.getColumns().add(0, createIndexColumn());
+    //tableView.getColumns().add(0, createIndexColumn());
     this.getChildren().addAll(header, tableView);
     setVgrow(tableView, Priority.ALWAYS);
     ViewUtils.setupView(this);
@@ -53,7 +52,7 @@ public class SpecificationTableView extends VBox {
    * Create a new SpecificationTableView from a given {@link TableView} of {@link HybridRow}s.
    * @param tableView The underlying {@link TableView} of {@link HybridRow}s
    */
-  public SpecificationTableView(TableView<HybridRow> tableView) {
+  public SpecificationTableView(SpreadsheetView tableView) {
     this(new Label("Specification Table:"), tableView);
   }
 
@@ -61,7 +60,7 @@ public class SpecificationTableView extends VBox {
     return header;
   }
 
-  public TableView<HybridRow> getTableView() {
+  public SpreadsheetView getTableView() {
     return tableView;
   }
 }
