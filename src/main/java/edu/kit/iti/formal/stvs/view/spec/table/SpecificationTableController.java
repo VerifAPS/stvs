@@ -184,6 +184,7 @@ public class SpecificationTableController implements Controller {
         }
       }
     }
+    tableView.refresh();
   }
 
   private ContextMenu createContextMenu() {
@@ -234,6 +235,7 @@ public class SpecificationTableController implements Controller {
     removeColumn.setOnAction(event -> {
       tableView.getColumns().remove(column);
       hybridSpec.removeColumnByName((String) column.getUserData());
+      tableView.refresh();
     });
     commentColumn.setOnAction(event -> {
       String specIoVariableName = (String) column.getUserData();
@@ -255,6 +257,7 @@ public class SpecificationTableController implements Controller {
         specIoVariable -> wildcardCells.put(specIoVariable.getName(), new ConstraintCell("-")));
     SpecificationRow<ConstraintCell> wildcardRow = ConstraintSpecification.createRow(wildcardCells);
     hybridSpec.getHybridRows().add(index, new HybridRow(wildcardRow, new ConstraintDuration("1")));
+    tableView.refresh();
   }
 
   /**
@@ -270,6 +273,8 @@ public class SpecificationTableController implements Controller {
           new SpecificationColumn<>(hybridSpec.getHybridRows().stream()
               .map(row -> new ConstraintCell("-")).collect(Collectors.toList()));
       hybridSpec.addColumn(specIoVariable, dataColumn);
+      tableView.refresh();
+
     }
 
     // Add column to view:

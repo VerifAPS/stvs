@@ -7,22 +7,19 @@ import edu.kit.iti.formal.stvs.model.table.problems.ConstraintSpecificationValid
 import edu.kit.iti.formal.stvs.model.table.problems.DurationProblem;
 import edu.kit.iti.formal.stvs.model.table.problems.SpecProblem;
 import edu.kit.iti.formal.stvs.view.ViewUtils;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.VBox;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.VBox;
-import javafx.util.converter.DefaultStringConverter;
 
 /**
  * The view for a cell in a specification table.
  *
  * @author Philipp
  */
-public class SpecificationTableCell extends TextFieldTableCell<HybridRow, String> {
+public class SpecificationTableCell extends SuperTextFieldTableCell<HybridRow, String> {
 
   private final ConstraintSpecificationValidator validator;
 
@@ -31,7 +28,7 @@ public class SpecificationTableCell extends TextFieldTableCell<HybridRow, String
    * @param validator The validator for this cell
    */
   public SpecificationTableCell(ConstraintSpecificationValidator validator) {
-    super(new DefaultStringConverter());
+    super();
     this.validator = validator;
 
     validator.problemsProperty().addListener(observable -> this.onProblemsChanged());
@@ -39,7 +36,9 @@ public class SpecificationTableCell extends TextFieldTableCell<HybridRow, String
     getStyleClass().add("spec-cell");
     ViewUtils.setupId(this);
     onProblemsChanged();
+
   }
+
 
   @Override
   public void updateItem(String item, boolean empty) {
@@ -55,6 +54,7 @@ public class SpecificationTableCell extends TextFieldTableCell<HybridRow, String
       setGraphic(counterExampleLabels);
     }
   }
+
 
   private void configureProblem(SpecProblem problem) {
     getStyleClass().remove("spec-cell-problem");
