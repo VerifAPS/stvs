@@ -26,7 +26,7 @@ public class HybridSpecification extends ConstraintSpecification {
 
   private final NullableProperty<ConcreteSpecification> counterExample;
   private final NullableProperty<ConcreteSpecification> concreteInstance;
-  private final boolean editable;
+  private final boolean editable; //all tables are editable now!
   private final ObservableList<HybridRow> rowsAsHybrid;
 
   /**

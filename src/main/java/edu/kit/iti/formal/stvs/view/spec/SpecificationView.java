@@ -28,7 +28,7 @@ public class SpecificationView extends VBox implements Lockable {
 
     private final StackPane variablesPane = new StackPane();
     private final StackPane tablePane = new StackPane();
-    private final StackPane timingDiagramPane = new StackPane();
+//test    private final StackPane timingDiagramPane = new StackPane();
 
 
     //private final SplitPane splitPane = new SplitPane();
@@ -46,6 +46,7 @@ public class SpecificationView extends VBox implements Lockable {
         //splitPane = new SplitPane();
         //SplitPane.setResizableWithParent(variablesPane,true);
 
+        /*
         buttonBox.getStyleClass().addAll("button-box", "verification-action-buttons", "action-buttons");
         startVerificationButton = new Button();
         startConcretizerButton = new Button();
@@ -54,7 +55,7 @@ public class SpecificationView extends VBox implements Lockable {
         this.getChildren().add(buttonBox);
         buttonBox.getChildren().addAll(startVerificationButton, startConcretizerButton);
         buttonBox.setAlignment(Pos.TOP_RIGHT);
-
+        */
         //splitPane.setOrientation(Orientation.VERTICAL);
         //splitPane.getItems().addAll(variablesPane, tablePane, timingDiagramPane);
         //splitPane.setDividerPosition(0, 0.25);
@@ -62,8 +63,9 @@ public class SpecificationView extends VBox implements Lockable {
         //getChildren().addAll(splitPane);
         ScrollPane scrollPane = new ScrollPane(
                 new VBox(variablesPane,
-                        new ResizerPane(() -> variableCollection.getContent()), tablePane,
-                        new ResizerPane(() -> tableView.getContent()), timingDiagramPane));
+                        new ResizerPane(() -> variableCollection.getContent()), tablePane//test,
+   //test                     new ResizerPane(() -> tableView.getContent()), timingDiagramPane
+                        ));
         getChildren().addAll(scrollPane);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setFitToWidth(true);
@@ -138,7 +140,7 @@ public class SpecificationView extends VBox implements Lockable {
      */
     public void setDiagram(TimingDiagramCollectionView diagram) {
         this.diagram = diagram;
-        timingDiagramPane.getChildren().setAll(diagram);
+    //test    timingDiagramPane.getChildren().setAll(diagram);
         AnchorPane.setLeftAnchor(diagram, 0.0);
         AnchorPane.setRightAnchor(diagram, 0.0);
         AnchorPane.setTopAnchor(diagram, 0.0);
@@ -164,7 +166,7 @@ public class SpecificationView extends VBox implements Lockable {
      */
     public void setEmptyDiagram(Node emptyDiagram) {
         this.diagram = null;
-        timingDiagramPane.getChildren().setAll(emptyDiagram);
+        //test timingDiagramPane.getChildren().setAll(emptyDiagram);
 
         //timingDiagramPane.getChildren().add(emptyDiagram);
         AnchorPane.setLeftAnchor(emptyDiagram, 0.0);

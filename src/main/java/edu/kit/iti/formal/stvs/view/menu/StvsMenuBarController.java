@@ -76,6 +76,7 @@ public class StvsMenuBarController implements Controller {
         view.config.setOnAction(this::openConfigDialog);
         view.wizard.setOnAction(this::openWizard);
         view.about.setOnAction(this::openAboutDialog);
+        view.verify.setOnAction(this::verify);
 
         //popluate examples
         for (Example ex : ExamplesFacade.getExamples()) {
@@ -86,6 +87,10 @@ public class StvsMenuBarController implements Controller {
             Tooltip.install(mex.getGraphic(), new Tooltip(ex.getDescription()));
             view.examples.getItems().add(mex);
         }
+    }
+
+    private void verify(ActionEvent actionEvent) {
+        System.out.println("Verify");
     }
 
     void openExample(Example ex) {

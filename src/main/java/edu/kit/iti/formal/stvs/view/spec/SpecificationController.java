@@ -100,10 +100,10 @@ public class SpecificationController implements Controller {
       menuItem.setDisable(!this.hybridSpecification.isEditable());
     }
     view.setTable(tableController.getView());
-    view.getStartButton().setOnAction(this::onVerificationButtonClicked);
-    view.getStartButton().disableProperty().bind(specificationInvalid);
-    view.getStartConcretizerButton().disableProperty().bind(specificationConcretizable.not());
-    view.getStartConcretizerButton().setOnAction(this::startConcretizer);
+    //view.getStartButton().setOnAction(this::onVerificationButtonClicked);
+    //view.getStartButton().disableProperty().bind(specificationInvalid);
+    //view.getStartConcretizerButton().disableProperty().bind(specificationConcretizable.not());
+    //view.getStartConcretizerButton().setOnAction(this::startConcretizer);
 
     hybridSpecification.concreteInstanceProperty()
         .addListener((observable, old, newVal) -> this.onConcreteInstanceChanged(newVal));

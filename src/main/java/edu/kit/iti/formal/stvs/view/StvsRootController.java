@@ -36,7 +36,8 @@ public class StvsRootController implements Controller {
   private final StvsRootModel stvsRootModel;
   private final ObjectProperty<List<Type>> types;
   private final ObjectProperty<List<CodeIoVariable>> ioVars;
-  private final SpecificationsPaneController specificationsPaneController;
+  private final SpecificationsPaneController specificationsPaneControllerLeft;
+  private final SpecificationsPaneController specificationsPaneControllerRight;
   private final VerificationResultHandler verificationResultHandler;
   private EditorPaneController editorPaneController;
 
@@ -54,9 +55,12 @@ public class StvsRootController implements Controller {
         typesFromCode(stvsRootModel.getScenario().getCode().getParsedCode()));
     this.ioVars = new SimpleObjectProperty<>(
         ioVarsFromCode(stvsRootModel.getScenario().getCode().getParsedCode()));
-    this.specificationsPaneController = new SpecificationsPaneController(
+    this.specificationsPaneControllerLeft = new SpecificationsPaneController(
         stvsRootModel.getHybridSpecifications(), stvsRootModel.getScenario().verificationState(),
         types, ioVars, stvsRootModel.getGlobalConfig(), stvsRootModel.getScenario());
+    this.specificationsPaneControllerRight = new SpecificationsPaneController(
+            stvsRootModel.getHybridSpecifications(), stvsRootModel.getScenario().verificationState(),
+            types, ioVars, stvsRootModel.getGlobalConfig(), stvsRootModel.getScenario());
 
     this.stvsRootModel.getScenario().codeObjectProperty().addListener(this::onCodeChange);
     this.stvsRootModel.getScenario().getCode().parsedCodeProperty()
@@ -65,11 +69,12 @@ public class StvsRootController implements Controller {
         .addListener(this::onVerificationResultChange);
 
     this.view =
-        new StvsRootView(editorPaneController.getView(), specificationsPaneController.getView());
+        new StvsRootView(editorPaneController.getView(), specificationsPaneControllerLeft.getView(), specificationsPaneControllerRight.getView());
 
     this.verificationResultHandler = new VerificationResultHandler(this);
 
     view.addEventHandler(VerificationEvent.EVENT_TYPE, this::onVerificationEvent);
+
   }
 
   /**

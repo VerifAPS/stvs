@@ -15,7 +15,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
@@ -52,6 +54,7 @@ public class StvsMainScene {
 
     this.scene = new Scene(createVBox(), rootModel.getGlobalConfig().getWindowWidth(),
         rootModel.getGlobalConfig().getWindowHeight());
+
 
     rootModel.getGlobalConfig().windowWidthProperty().bind(scene.widthProperty());
     rootModel.getGlobalConfig().windowHeightProperty().bind(scene.heightProperty());

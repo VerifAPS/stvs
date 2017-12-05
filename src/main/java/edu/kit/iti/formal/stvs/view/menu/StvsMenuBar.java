@@ -5,10 +5,7 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -24,6 +21,7 @@ public class StvsMenuBar extends MenuBar {
     //public Menu edit;
     public Menu help;
     public Menu examples;
+    public Menu verify;
 
     public Menu openOther;
     public Menu openRecent;
@@ -43,6 +41,7 @@ public class StvsMenuBar extends MenuBar {
     public MenuItem saveSessionAs;
     public MenuItem about;
 
+
     /**
      * Menu bar at the top of the window.
      */
@@ -52,6 +51,7 @@ public class StvsMenuBar extends MenuBar {
         examples = new Menu("_Examples");
         //edit = new Menu("Edit");
         help = new Menu("Help");
+        verify = new Menu("Verify");
 
         // create menu-items
         open = new MenuItem("_Open");
@@ -83,6 +83,7 @@ public class StvsMenuBar extends MenuBar {
 
         about = new MenuItem("About");
 
+
         // Add menu items to "open other" menu
         openOther.getItems().addAll(openSpec, openCode, openSession);
 
@@ -96,6 +97,6 @@ public class StvsMenuBar extends MenuBar {
         help.getItems().addAll(about, wizard);
 
         // Add menus to menubar
-        this.getMenus().addAll(file, examples, help);
+        this.getMenus().addAll(file, examples, help, verify);
     }
 }

@@ -68,6 +68,8 @@ public class SpecificationsPaneController implements Controller {
     this.ioVariables = ioVariables;
     this.hybridSpecifications = hybridSpecifications;
 
+    this.view.setPrefWidth(450); //hard coded for now
+
     hybridSpecifications.forEach(this::addTab);
     this.view.onTabAdded(() -> {
       HybridSpecification hybridSpecification =
@@ -80,6 +82,7 @@ public class SpecificationsPaneController implements Controller {
       }
       hybridSpecifications.add(hybridSpecification);
     });
+
 
     view.getTabPane().getSelectionModel().selectedItemProperty()
         .addListener((obs, old, tab) -> onSwitchActiveTab(tab));
