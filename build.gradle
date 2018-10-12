@@ -66,6 +66,11 @@ dependencies {
 
     compile 'org.fxmisc.cssfx:cssfx:1.0.0'
 
+    compile "org.openjfx:javafx-base:11:linux"
+    compile "org.openjfx:javafx-graphics:11:linux"
+    compile "org.openjfx:javafx-controls:11:linux"
+    compile "org.openjfx:javafx-web:11:linux"
+
     compile 'org.controlsfx:controlsfx:8.40.13'
 
     testCompile "junit:junit:4.12"
@@ -171,3 +176,21 @@ task guiTest(type: Test) {
 
 // coverage
 cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
+
+compileJava {
+    doFirst {
+        options.compilerArgs = [
+                '--module-path', classpath.asPath,
+                '--add-modules', 'javafx.controls'
+        ]
+    }
+}
+
+run {
+    doFirst {
+        jvmArgs = [
+                '--module-path', classpath.asPath,
+                '--add-modules', 'javafx.controls'
+        ]
+    }
+}

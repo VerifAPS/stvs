@@ -212,7 +212,8 @@ public class TimingDiagramController implements Controller {
       cycleSelectionRectangle.setOnMouseEntered(event -> {
         if (activated.get()) {
           cycleSelectionRectangle.setOpacity(1);
-          selection.setRow(concreteSpec.cycleToRowNumber(finalCycleIndex));
+        try{
+          selection.setRow(concreteSpec.cycleToRowNumber(finalCycleIndex));} catch(Exception e){e.printStackTrace();}
           selection.setColumn(ioVariable.getName());
         }
       });

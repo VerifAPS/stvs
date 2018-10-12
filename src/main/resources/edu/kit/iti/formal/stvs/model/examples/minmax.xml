@@ -6,8 +6,41 @@ TYPE
   OperationMode : (Learn , Active);
 END_TYPE
 
+FUNCTION SEL : INT
+VAR_INPUT
+        G : BOOL;
+        a,b : INT;
+END_VAR
 
-PROGRAM MinMaxWarning
+IF G THEN SEL := a;
+     ELSE SEL := b; END_IF
+
+END_FUNCTION
+
+
+FUNCTION MAX : INT
+VAR_INPUT
+        in0 : INT;
+        in1 : INT;
+END_VAR
+
+MAX := SEL(in0>=in1, in0, in1);
+
+END_FUNCTION
+
+FUNCTION MIN : INT
+VAR_INPUT
+        in0 : INT;
+        in1 : INT;
+END_VAR
+
+MIN := SEL(in0<=in1, in0, in1);
+
+END_FUNCTION
+
+
+PROGRAM MinMax
+
 VAR CONSTANT
     WAIT_BEFORE_WARNING : INT; // Amount of cycles outside  before given a warning.
     WAIT_AFTER_WARNING  : INT; // Amount of cycles inside, before withdraw warning.
@@ -20,7 +53,7 @@ VAR_INPUT
 END_VAR
 
 VAR_OUTPUT
-        W       : Bool;     // Warning flag, iff $I \not\in [lower,upper]$
+        W       : BOOL;     // Warning flag, iff $I \not\in [lower,upper]$
         Q       : INT;      // Truncated input signal
 END_VAR
 
@@ -32,10 +65,10 @@ VAR
 END_VAR
 
 
-IF mode = Learn THEN // go into learning
+IF mode = OperationMode#Learn THEN // go into learning
         IF learn THEN
-                lower = MIN(lower, I);
-                upper = MAX(upper, I);
+                lower := MIN(lower, I);
+                upper := MAX(upper, I);
         END_IF
         Q := 0;
         W := FALSE;
@@ -62,7 +95,10 @@ ELSE
         END_IF
 END_IF
 
-END_PROGRAM]]></plaintext>
+END_PROGRAM
+
+END_IF
+]]></plaintext>
     </code>
 
     <tabs>

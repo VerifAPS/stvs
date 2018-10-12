@@ -48,6 +48,7 @@ public class ConfigDialogManager implements Controller {
     this.config = config;
     this.view = new ConfigDialogPane();
     dialog = new Dialog<>();
+    dialog.setResizable(true);
     dialog.setTitle("Preferences");
     view = new ConfigDialogPane();
     // set initial values
