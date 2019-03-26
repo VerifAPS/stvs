@@ -45,9 +45,9 @@ public class AlertFactory {
     return createAlert(Alert.AlertType.ERROR, title, description, exception.getMessage()
         /*
           // Decided in Issue https://github.com/VerifAPS/stvs/issues/20, that the expandable content
-          // should not be shown, instead it should be just logged
-        , stackTrace
-        //*/);
+          // should not be shown, instead it should be just logged */
+        /* MU: give it another try */
+        , stackTrace);
   }
 
   /**
@@ -108,6 +108,12 @@ public class AlertFactory {
     }
 
     alert.getDialogPane().setId("AlertDialogPane_" + type.toString());
+
+    // MU: possible resolution to #20
+    alert.setResizable(true);
+    alert.resizableProperty().addListener((x,o,n) -> {
+      alert.setResizable(true);
+    });
 
     return alert;
   }
